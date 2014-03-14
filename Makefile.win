@@ -1,0 +1,46 @@
+# Project: Kepler
+# Makefile created by Dev-C++ 5.5.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Kepler.o RequestHttp.o ResponseHttp.o File.o Regex.o OperationString.o
+LINKOBJ  = main.o Kepler.o RequestHttp.o ResponseHttp.o File.o Regex.o OperationString.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/mingw32/lib" -static-libstdc++ -static-libgcc "../Program Files (x86)/Dev-Cpp/MinGW32/lib/libwsock32.a" "../Program Files (x86)/Dev-Cpp/MinGW32/lib/libws2_32.a" 
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.7.2/include/c++"
+BIN      = Kepler.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CPP) -c main.c -o main.o $(CXXFLAGS)
+
+Kepler.o: Kepler.c
+	$(CPP) -c Kepler.c -o Kepler.o $(CXXFLAGS)
+
+RequestHttp.o: RequestHttp.c
+	$(CPP) -c RequestHttp.c -o RequestHttp.o $(CXXFLAGS)
+
+ResponseHttp.o: ResponseHttp.c
+	$(CPP) -c ResponseHttp.c -o ResponseHttp.o $(CXXFLAGS)
+
+File.o: File.c
+	$(CPP) -c File.c -o File.o $(CXXFLAGS)
+
+Regex.o: Regex.c
+	$(CPP) -c Regex.c -o Regex.o $(CXXFLAGS)
+
+OperationString.o: OperationString.c
+	$(CPP) -c OperationString.c -o OperationString.o $(CXXFLAGS)
